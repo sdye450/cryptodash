@@ -1,0 +1,56 @@
+
+<router-outlet></router-outlet>
+
+<div style="text-align:center">
+<mat-card class="center">
+  <mat-card-title>
+    <div id="titre">
+      Taux de change {{selectedCrypto}}
+    </div>
+    <div>
+      <mat-slider
+        class="example-margin"
+        [max]="50"
+        [min]="10"
+        [step]="5"
+        [thumb-label]="true"
+        [tick-interval]="tickInterval"
+        [(ngModel)]="maxItems"
+        (change)="onChangeMax()"
+        matTooltip="Max dernières valeurs à afficher"
+      ></mat-slider>
+    </div>
+
+  </mat-card-title>
+  <mat-card-subtitle>
+    Cours récupéré à {{formatHeure()}}
+  </mat-card-subtitle>
+  <mat-card-header>
+      <mat-select (change)="onSelectMoney($event)" [(value)]="selectedCrypto">
+        <mat-option *ngFor="let c of cryptos" [value]="c">{{c}}</mat-option>
+      </mat-select>
+
+      <mat-select (change)="onSelectRefresh($event)" [(value)]="selectedRefresh">
+        <mat-option *ngFor="let m of refreshMn" [value]="m">toutes les {{m}} mn</mat-option>
+      </mat-select>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div id="cours" fxLayoutAlign="center" fxFlexAlign="center" fxFlex="10">
+      <mat-list *ngIf="exchange.USD && exchange.EUR" style="text-align: center; align-content: center">
+        <mat-list-item>{{formatNombre(exchange.USD, 'USD')}}</mat-list-item>
+        <mat-list-item>{{formatNombre(exchange.EUR, 'EUR')}}</mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>{{this.chronoText}}</mat-card-footer>
+</mat-card>
+</div>
+<!--<main [class]="theme">-->
+<main>
+<app-graph [chartData]="dataGraph" [displayChart]="chartOk"
+           xLabel="les {{maxItems}} dernières valeurs"
+           yLabel="échange en €"
+           [view]="[1200,600]"></app-graph>
+</main>
+

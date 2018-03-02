@@ -1,0 +1,23 @@
+<div style=" width: 75%; margin: 10px auto;" *ngIf="displayChart">
+
+      <ngx-charts-line-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="chartData"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xLabel"
+        [yAxisLabel]="yLabel"
+        [autoScale]="autoScale"
+        [animations]="true"
+        [legendTitle]="''"
+        [schemeType]="'linear'"
+        (select)="onSelect($event)">
+      </ngx-charts-line-chart>
+
+</div>
+
