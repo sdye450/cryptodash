@@ -1,5 +1,7 @@
 # Cryptodash
 
+![alt text](https://rawgit.com/zorky/cryptodash/master/2018-04-18_20h42_39.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
 
 ## Build
